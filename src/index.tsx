@@ -1,4 +1,5 @@
 import { Hono } from 'hono'
+import { basicAuth } from 'hono/basic-auth'
 import type { Database } from '@cloudflare/d1'
 import { renderToString } from 'react-dom/server';
 //
@@ -29,6 +30,14 @@ import {AdminPostIndex} from './pages/admin/posts/App';
 import {AdminPostCreate} from './pages/admin/posts/create/App';
 import {AdminPostShow} from './pages/admin/posts/show/App';
 import {AdminPostEdit} from './pages/admin/posts/edit/App';
+//basicAuth
+app.use(
+  "/admin/*",
+  basicAuth({
+    username: "test",
+    password: "1111",
+  })
+);
 //
 app.get('/', async (c) => {
   let page = c.req.query('page');
