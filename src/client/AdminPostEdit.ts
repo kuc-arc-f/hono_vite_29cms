@@ -2,7 +2,7 @@ import { marked } from 'marked';
 import MicroModal from 'micromodal';
 
 //@ts-ignore
-console.log("#AdminPostEdit.client.ts", TaskItemId);
+//console.log("#AdminPostEdit.client.ts", TaskItemId);
 //
 const AdminPostEdit = {
     /**
@@ -11,7 +11,7 @@ const AdminPostEdit = {
      *
      * @return
      */
-    update: async function()
+    update: async function(id: number)
     {
         try{
             let ret = false;
@@ -27,7 +27,7 @@ const AdminPostEdit = {
             }
             const item = {
                 //@ts-ignore
-                id: Number(TaskItemId),
+                id: Number(id),
                 title: titleValue,
                 content: contentValue,
             }
@@ -132,21 +132,25 @@ console.log(json);
     {
         try{
             console.log("#startProc");
+            const id = (<HTMLInputElement>document.querySelector("#item_id")).value;
+console.log("id=", id);
             //btn
             const button = document.querySelector('#btn_delete') as HTMLElement;
             button.addEventListener('click', async () => {
 //console.log("btn_delete=");
+/*
                 const result = await this.delete();
 console.log("result=", result);
                 if(result === true) {
                     window.location.href = '/admin/posts';
                 }
+*/
             }); 
             //
             const saveButton = document.querySelector('#btn_save') as HTMLElement;
             saveButton.addEventListener('click', async () => {
 //console.log("btn_delete=");
-                const result = await this.update();
+                const result = await this.update(Number(id));
 console.log("result=", result);
                 if(result === true) {
                     window.location.href = '/admin/posts';
