@@ -29,8 +29,14 @@ import {AdminPostCreate} from './pages/admin/posts/create/App';
 import {AdminPostShow} from './pages/admin/posts/show/App';
 import {AdminPostEdit} from './pages/admin/posts/edit/App';
 //
-app.get('/', (c) => {
-  return c.html(renderToString(Top([])))
+app.get('/', async (c) => {
+  let page = c.req.query('page');
+  if(!page) { page = '1';}
+console.log("page=", page);
+  const items = await postRouter.get_list_page(c, c.env.DB, page);
+console.log(items);
+  return c.html(renderToString(<Top items={items} page={page} />));
+//  return c.html(renderToString(Top([])))
 })
 app.get('/test1', async (c) => {
   const sql = `
