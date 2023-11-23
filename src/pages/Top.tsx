@@ -31,6 +31,17 @@ console.log(props.items);
                 );
             })}
             </ul>
+            {/* paginate */}
+            <div className="paginate_wrap py-2 my-2">
+                <a href={`/?page=${beforePage}`}>
+                <button className="btn-outline-purple"> ＜ </button>
+                </a>
+                <a href={`/?page=${nextPage}`}>
+                <button className="btn-outline-purple"> ＞ </button>
+                </a>
+            </div>
+            <hr className="my-8" />
+
         </div>
 
     </Layout>

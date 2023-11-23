@@ -13,6 +13,7 @@ import taskRouter from './routes/tasks';
 import postRouter from './routes/posts';
 //pages
 import Top from './pages/Top';
+import {PostShow} from './pages/posts/show/App';
 import Test1 from './pages/test/App';
 import Test2 from './pages/test2/App';
 import Test3 from './pages/test3/App';
@@ -53,20 +54,12 @@ console.log(result.results);
     </div>
     )
   )
-})
-app.get('/test2', async (c) => { 
-  return c.html(renderToString(Test2([])));
 });
-app.get('/test3', async (c) => { 
-  return c.html(renderToString(Test3([])));
-});
-app.get('/test4', async (c) => { 
-  const items = await testRouter.get_list(c, c.env.DB);
-//console.log(items);
-  return c.html(renderToString(Test4(items)));
-});
-app.get('/test5', async (c) => { 
-  return c.html(renderToString(Test5([])));
+app.get('/posts/:id', async (c) => { 
+  const {id} = c.req.param();
+  const item = await postRouter.get(c, c.env.DB, id);
+console.log("id=", id);
+  return c.html(renderToString(<PostShow item={item} id={Number(id)} />))
 });
 /* tasks */
 app.get('/tasks', async (c) => { 
