@@ -1,5 +1,3 @@
-import type { FC } from 'hono/jsx'
-import { html } from 'hono/html'
 import { marked } from 'marked';
 import React from 'react';
 import {AdminLayout} from '../../../layout/AdminLayout';
@@ -9,6 +7,7 @@ export function AdminPostShow(props: any) {
     console.log("#taskShow");
     console.log(props);
     const content = marked.parse(props.item.content);
+console.log(content);
     //
     return (
     <AdminLayout>
@@ -21,10 +20,13 @@ export function AdminPostShow(props: any) {
             <p>id: {props.item.id}, {props.item.createdAt}</p>
             <hr className="my-2" />
             <p>Content:</p>
-            <div id="post_item"></div>
+            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <hr className="my-2" />
+            
             <input className="d-none" type="text" value={props.item.id} id="item_id" />
             <input className="d-none" type="text" value={content} id="item_content" />
             <button id="btn_delete" className="btn-red ms-2 my-2">Delete</button>
+            <hr className="my-8" />
             {/* JS */}
             {import.meta.env.PROD ? (
                 <script type="module" src="/static/AdminPostShow.js"></script>
@@ -38,5 +40,5 @@ export function AdminPostShow(props: any) {
 }
     
 /*
-<pre>{props.item.content}</pre>
+<div id="post_item"></div>
 */

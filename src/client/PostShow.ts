@@ -55,11 +55,10 @@ console.log(json);
             //id
             const id = (<HTMLInputElement>document.querySelector("#item_id")).value;
 console.log("id=", id);
+            /*
             const md = (<HTMLInputElement>document.querySelector("#item_content")).value;
-//console.log(md);
             const contentElem = (<HTMLInputElement>document.querySelector("#post_item"));
             contentElem.innerHTML = md;
-            /*
             */
         } catch (e) {
             console.error(e);

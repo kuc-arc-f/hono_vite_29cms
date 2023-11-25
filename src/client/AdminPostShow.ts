@@ -1,7 +1,4 @@
 
-//import { marked } from 'marked';
-//@ts-ignore
-//console.log("#AdminPostShow.client.ts", TaskItemId);
 //
 const AdminPostShow = {
     /**
@@ -67,12 +64,6 @@ console.log("result=", result);
                     window.location.href = '/admin/posts';
                 }
             });
-            const md = (<HTMLInputElement>document.querySelector("#item_content")).value;
-//console.log(md);
-            const contentElem = (<HTMLInputElement>document.querySelector("#post_item"));
-            contentElem.innerHTML = md;
-            /*
-            */
         } catch (e) {
             console.error(e);
         }    

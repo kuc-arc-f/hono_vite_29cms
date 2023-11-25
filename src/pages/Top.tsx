@@ -15,8 +15,6 @@ console.log(props.items);
     return (
     <Layout>
         <div>
-            <h1 className="text-4xl font-bold">Top111</h1>
-            <hr className="my-2" />
             <h1 className="text-4xl font-bold">Blogs</h1>
             <hr className="my-4" />
             <ul>
